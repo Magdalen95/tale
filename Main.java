@@ -1,6 +1,4 @@
-/**
- * Created by Jan on 2018-05-21.
- */
+
 import sun.util.resources.cldr.naq.CalendarData_naq_NA;
 
 import java.io.*;
@@ -8,6 +6,16 @@ import java.lang.String;
 import java.util.Scanner;
 
 public class Main {
+    public static void qOP(algHeurystyczny algHeurystyczny, kombinacja kombinacja){
+        if(algHeurystyczny.lop>kombinacja.lop) System.out.println("Algorytm heurystyczny jest gorszy niż algorytm dokladny pod wzgledem ilosci operacji");
+        else if (algHeurystyczny.lop<kombinacja.lop) System.out.println("Algorytm heurystyczny jest lepszy niż algorytm dokladny pod wzgledem ilosci operacji");
+        else System.out.println("Algorytm heurystyczny i algorytm dokladny są takie same pod wzgledem ilosci operacji");
+    }
+    public static void qLP(algHeurystyczny algHeurystyczny, kombinacja kombinacja){
+        if(algHeurystyczny.lpa>kombinacja.lpa) System.out.println("Algorytm heurystyczny jest gorszy niż algorytm dokladny pod wzgledem wykorzytsania pamieci");
+        else if (algHeurystyczny.lpa<kombinacja.lpa) System.out.println("Algorytm heurystyczny jest lepszy niż algorytm dokladny pod wzgledem wykorzytsania pamieci");
+        else System.out.println("Algorytm heurystyczny i algorytm dokladny są takie same pod wzgledem wykorzytsania pamieci");
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -47,21 +55,33 @@ public class Main {
         p = Integer.parseInt(odczyt.nextLine());
 
        if(p==1)
-           { algHeurystyczny.algorytm(w1,val1,lad1);
-               kombinacja.algorytm(w1,val1,lad1);}
-        else if (p==2){  algHeurystyczny.algorytm(w2,val2,lad2);
-               kombinacja.algorytm(w2,val2,lad2);}
+            {   algHeurystyczny.algorytm(w1,val1,lad1);
+                kombinacja.algorytm(w1,val1,lad1);
+                qOP(algHeurystyczny,kombinacja);
+                qLP(algHeurystyczny,kombinacja);
+
+            }
+        else if (p==2)
+            {   algHeurystyczny.algorytm(w2,val2,lad2);
+                kombinacja.algorytm(w2,val2,lad2);
+                qOP(algHeurystyczny,kombinacja);
+                qLP(algHeurystyczny,kombinacja);
+            }
        else if (p==3)
-           { algHeurystyczny.algorytm(w3,val3,lad3);
-               kombinacja.algorytm(w3,val3,lad3);}
+            {   algHeurystyczny.algorytm(w3,val3,lad3);
+                kombinacja.algorytm(w3,val3,lad3);
+                qOP(algHeurystyczny,kombinacja);
+                qLP(algHeurystyczny,kombinacja);
+            }
         else
-           {System.out.println("Zart dla Prowadzącego : Programista otwiera lodówkę, sięga po masło i patrząc na napis „82%” mówi:\n" +
+           {    System.out.println("Zart dla Prowadzącego : Programista otwiera lodówkę, sięga po masło i patrząc na napis „82%” mówi:\n" +
                        "– a to jeszcze chwilka i będzie gotowe");
            }
             System.out.println("chcesz sprobowac jeszcze raz?\n1-tak\n2-nie");
             int check = Integer.parseInt(odczyt.nextLine());
             if (check==2) break;
         }
+
 
     }
 
